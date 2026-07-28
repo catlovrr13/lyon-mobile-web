@@ -1,0 +1,1 @@
+export const BASE_URL = "http://module_c.test/module_c_api.php"
