@@ -156,3 +156,19 @@
         @apply bg-background text-foreground;
     }
 }
+
+.weather-icon path,
+.weather-icon circle {
+    stroke: #1c3e60;
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 200;
+    transition: stroke-dasharray 2s, stroke-dashoffset 2s;
+}
+
+.weather-icon:hover path,
+.weather-icon:hover circle {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+}

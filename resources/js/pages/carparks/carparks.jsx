@@ -66,7 +66,7 @@ export default function CarparksList() {
     };
 
     if (loading) {
-        return <div>Loading..</div>;
+        return <div className="flex items-center justify-center">Loading..</div>;
     }
 
     useEffect(() => {
@@ -76,20 +76,22 @@ export default function CarparksList() {
     if (focused) {
         return (
             <AppLayout>
-                <Head title={focused.name}/>
-                    <button onClick={() => setFocused(null)} className='font-semibold mt-2 ml-2'>Go Back</button>
-                <div className="flex justify-center items-center flex-col flex-wrap">
-                    <div className='w-100 border-3 border-grey-300 p-10 rounded-2xl'>
-                    <h1 className='font-bold text-3xl text-center'>{focused.name}</h1>
-                    <p>Available Spaces: {focused.availableSpaces}</p>
-                    <p>Location: {focused.location}</p>
-                    <p>Distance: {focused.distance}</p>
-                    <p>Latitude: {focused.latitude}</p>
-                    <p>Longitude: {focused.longitude}</p>
+                <Head title={focused.name} />
+                <button onClick={() => setFocused(null)} className="mt-2 ml-2 font-semibold">
+                    Go Back
+                </button>
+                <div className="flex flex-col flex-wrap items-center justify-center">
+                    <div className="border-grey-300 w-100 rounded-2xl border-3 p-10">
+                        <h1 className="text-center text-3xl font-bold">{focused.name}</h1>
+                        <p>Available Spaces: {focused.availableSpaces}</p>
+                        <p>Location: {focused.location}</p>
+                        <p>Distance: {focused.distance}</p>
+                        <p>Latitude: {focused.latitude}</p>
+                        <p>Longitude: {focused.longitude}</p>
                     </div>
                 </div>
             </AppLayout>
-        )
+        );
     }
     return (
         <AppLayout>
@@ -110,7 +112,9 @@ export default function CarparksList() {
                     {finalList.map((park) => (
                         <div key={park.name} className="border-grey-300 flex h-45 w-90 flex-col rounded-2xl border-3 p-5">
                             <div className="flex flex-row">
-                                <h1 className="flex-1 text-xl font-semibold" onClick={() => setFocused(park)}>{park.name}</h1>
+                                <h1 className="flex-1 text-xl font-semibold" onClick={() => setFocused(park)}>
+                                    {park.name}
+                                </h1>
                                 <button onClick={() => togglePin(park.name)} className="border-grey-300 rounded-2xl border p-2 text-sm">
                                     {pinned.includes(park.name) ? 'Unpin' : 'Pin'}
                                 </button>
