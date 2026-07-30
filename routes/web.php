@@ -8,12 +8,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
     Route::get('carparks', function () {
         return Inertia::render('carparks/carparks');
-    })->name('carparks.list');
+    })->name('carparks');
     Route::get('events', function () {
         return Inertia::render('events/events');
     })->name('events.list');

@@ -18,14 +18,14 @@ export default function Events() {
 
     const handleScroll = () => {
         if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 300 && !isLoading) {
-            setPage(prev => prev + 1);
-            // console.log("current page: ", page)
+            setPage((prev) => prev + 1);
+            console.log('current page: ', page);
             nextPage().finally(() => setIsLoading(false));
         }
     };
 
     const nextPage = async () => {
-            setIsLoading(true);
+        setIsLoading(true);
         const ress = await fetch(`${BASE_URL}/events.json?page=${page}`);
         const nextPageResults = await ress.json();
         console.log(nextPageResults);
@@ -36,8 +36,8 @@ export default function Events() {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [isLoading]);
 
     return (
@@ -48,7 +48,7 @@ export default function Events() {
                 </div>
                 <div className="m-4 flex flex-wrap items-center justify-center gap-3">
                     {events.map((event) => (
-                        <div key={event.title} className="border-grey-300 flex w-90 flex-col rounded-2xl border-3 p-5 h-115">
+                        <div key={event.title} className="border-grey-300 flex h-115 w-90 flex-col rounded-2xl border-3 p-5">
                             <img src={`http://module_c.test${event.image}`} alt="" width={50} height={50} className="mb-2 w-full rounded-2xl" />
                             <h1 className="font-semibold">{event.title}</h1>
                             <p>Date: {event.date}</p>
